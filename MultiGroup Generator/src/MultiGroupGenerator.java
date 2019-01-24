@@ -40,7 +40,7 @@ public class MultiGroupGenerator
 	public static void getNumberOfGroups()
 		{
 		Scanner userInput = new Scanner(System.in);
-		System.out.println("You have " + roster.size() + " students.");
+		System.out.println("You have " + roster.size() + " students.\n");
 		System.out.println("What is your maximum group size?");
 		maxGroupSize = userInput.nextInt();
 		numberOfGroups = (roster.size() / maxGroupSize) + 1;
@@ -55,18 +55,35 @@ public class MultiGroupGenerator
 		{
 		int counter = 0;
 		System.out.println("First Project\n");
-		for (int i = 1; i < numberOfLargerGroups + maxGroupSize - 1; i++)
-			{
-			System.out.println("Group #" + i);
-			for(int j = 1; j <= maxGroupSize; j++)
+		
+
+			for (int i = 1; i <= numberOfLargerGroups; i++)
 				{
-				if(roster.get(counter).getRosterNumber() == j)
+				System.out.println("Group #" + i);
+				for(int j = 0; j < maxGroupSize; j++)
 					{
-					System.out.println(roster.get(j).getName());
-					}	
-				counter++;
+					//if(roster.get(counter).getRosterNumber() == j)
+						System.out.println(roster.get(counter).getName());
+							
+					counter++;
+					}
+				System.out.println();
 				}
-			System.out.println();
-			}
+			
+			for (int i = 0; i < numberOfGroups - numberOfLargerGroups; i++)
+				{
+				System.out.println("Group #" + (numberOfLargerGroups + i + 1));
+				for(int j = 0; j < maxGroupSize - 1; j++)
+					{
+					//if(roster.get(counter).getRosterNumber() == j)
+						System.out.println(roster.get(counter).getName());
+							
+					counter++;
+					}
+				System.out.println();
+				}
+			
+			
 		}
 	}
+	
