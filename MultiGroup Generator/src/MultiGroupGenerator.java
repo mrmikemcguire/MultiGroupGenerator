@@ -17,6 +17,7 @@ public class MultiGroupGenerator
 		//displayStudents();
 		getNumberOfGroups();
 		printFirstGrouping();
+		printSecondGrouping();
 		}
 
 	public static void fillArrayFromTextFile() throws FileNotFoundException
@@ -55,35 +56,63 @@ public class MultiGroupGenerator
 		{
 		int counter = 0;
 		System.out.println("First Project\n");
-		
 
-			for (int i = 1; i <= numberOfLargerGroups; i++)
+		for (int i = 1; i <= numberOfLargerGroups; i++)
+			{
+			System.out.println("Group #" + i);
+			for(int j = 0; j < maxGroupSize; j++)
 				{
-				System.out.println("Group #" + i);
-				for(int j = 0; j < maxGroupSize; j++)
-					{
-					//if(roster.get(counter).getRosterNumber() == j)
-						System.out.println(roster.get(counter).getName());
-							
-					counter++;
-					}
-				System.out.println();
+				System.out.println(roster.get(counter).getName());	
+				counter++;
 				}
-			
-			for (int i = 0; i < numberOfGroups - numberOfLargerGroups; i++)
+			System.out.println();
+			}
+		
+		for (int i = 0; i < numberOfGroups - numberOfLargerGroups; i++)
+			{
+			System.out.println("Group #" + (numberOfLargerGroups + i + 1));
+			for(int j = 0; j < maxGroupSize - 1; j++)
 				{
-				System.out.println("Group #" + (numberOfLargerGroups + i + 1));
-				for(int j = 0; j < maxGroupSize - 1; j++)
-					{
-					//if(roster.get(counter).getRosterNumber() == j)
-						System.out.println(roster.get(counter).getName());
-							
-					counter++;
-					}
-				System.out.println();
+				System.out.println(roster.get(counter).getName());	
+				counter++;
 				}
-			
-			
+			System.out.println();
+			}	
+		System.out.println();
+		}
+	
+	public static void printSecondGrouping()
+		{
+		int counter = 0;
+		System.out.println("Second Project\n");
+
+		for (int i = 1; i <= numberOfLargerGroups; i++)
+			{
+			System.out.println("Group #" + i);
+			for(int j = 0; j < maxGroupSize; j++)
+				{
+				if (counter % 4 == 0)
+					{
+					System.out.println(roster.get(counter).getName());	
+					}
+				counter++;
+				}
+			System.out.println();
+			}
+		
+		for (int i = 0; i < numberOfGroups - numberOfLargerGroups; i++)
+			{
+			System.out.println("Group #" + (numberOfLargerGroups + i + 1));
+			for(int j = 0; j < maxGroupSize - 1; j++)
+				{
+				if (counter % 4 == 0)
+					{
+					System.out.println(roster.get(counter).getName());	
+					}
+				counter++;
+				}
+			System.out.println();
+			}	
 		}
 	}
 	
