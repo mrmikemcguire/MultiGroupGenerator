@@ -89,13 +89,20 @@ public class MultiGroupGenerator
 		for (int i = 1; i <= numberOfLargerGroups; i++)
 			{
 			System.out.println("Group #" + i);
-			for(int j = 0; j < maxGroupSize; j++)
+			if (counter % 4 == 0)
 				{
-				if (counter % 4 == 0)
+				for(int j = 0; j < maxGroupSize; j++)
 					{
 					System.out.println(roster.get(counter).getName());	
+					if (counter < roster.size() - 4)
+						{
+						counter = counter + 4;
+						}
+					else
+						{
+						counter = 1;
+						}
 					}
-				counter++;
 				}
 			System.out.println();
 			}
