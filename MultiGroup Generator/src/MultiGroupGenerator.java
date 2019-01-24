@@ -16,6 +16,7 @@ public class MultiGroupGenerator
 		fillArrayFromTextFile();
 		//displayStudents();
 		getNumberOfGroups();
+		printFirstGrouping();
 		}
 
 	public static void fillArrayFromTextFile() throws FileNotFoundException
@@ -47,6 +48,25 @@ public class MultiGroupGenerator
 		System.out.println("You will have " + numberOfGroups + " groups,");
 		System.out.println(numberOfLargerGroups + " groups of " +
 				maxGroupSize + " and " + (numberOfGroups - numberOfLargerGroups) +
-				" groups of " + (maxGroupSize - 1) + ".");
+				" groups of " + (maxGroupSize - 1) + ".\n\n");
+		}
+	
+	public static void printFirstGrouping()
+		{
+		int counter = 0;
+		System.out.println("First Project\n");
+		for (int i = 1; i < numberOfLargerGroups + maxGroupSize - 1; i++)
+			{
+			System.out.println("Group #" + i);
+			for(int j = 1; j <= maxGroupSize; j++)
+				{
+				if(roster.get(counter).getRosterNumber() == j)
+					{
+					System.out.println(roster.get(j).getName());
+					}	
+				counter++;
+				}
+			System.out.println();
+			}
 		}
 	}
