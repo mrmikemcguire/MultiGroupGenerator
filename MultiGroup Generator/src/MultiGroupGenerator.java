@@ -9,6 +9,7 @@ public class MultiGroupGenerator
 	static int maxGroupSize;
 	static int numberOfGroups;
 	static int numberOfLargerGroups;
+	static int positionNumber;
 	static ArrayList <Student> roster = new ArrayList <Student>();
 
 	public static void main(String[] args) throws IOException
@@ -16,7 +17,7 @@ public class MultiGroupGenerator
 		fillArrayFromTextFile();
 		//displayStudents();
 		getNumberOfGroups();
-		printFirstGrouping();
+		//printFirstGrouping();
 		printSecondGrouping();
 		}
 
@@ -30,6 +31,7 @@ public class MultiGroupGenerator
 			counter++;
 			}
 		}
+	
 	public static void displayStudents()
 		{
 		for (Student s : roster)
@@ -83,40 +85,44 @@ public class MultiGroupGenerator
 	
 	public static void printSecondGrouping()
 		{
-		int counter = 0;
 		System.out.println("Second Project\n");
 
 		for (int i = 1; i <= numberOfLargerGroups; i++)
 			{
 			System.out.println("Group #" + i);
-			if (counter % 4 == 0)
+			positionNumber = i - 1;
+
+			for(int j = 0; j < maxGroupSize; j++)
 				{
-				for(int j = 0; j < maxGroupSize; j++)
-					{
-					System.out.println(roster.get(counter).getName());	
-					if (counter < roster.size() - 4)
-						{
-						counter = counter + 4;
-						}
-					else
-						{
-						counter = 1;
-						}
+				if (positionNumber < roster.size())
+					{	
+					System.out.println(roster.get(positionNumber).getName());
 					}
+				else
+					{
+					positionNumber = 0;
+					}
+				positionNumber += 4;
 				}
 			System.out.println();
 			}
+
 		
 		for (int i = 0; i < numberOfGroups - numberOfLargerGroups; i++)
 			{
+			positionNumber = (numberOfLargerGroups + i);
 			System.out.println("Group #" + (numberOfLargerGroups + i + 1));
 			for(int j = 0; j < maxGroupSize - 1; j++)
 				{
-				if (counter % 4 == 0)
-					{
-					System.out.println(roster.get(counter).getName());	
+				if (positionNumber < roster.size())
+					{	
+					System.out.println(roster.get(positionNumber).getName());
 					}
-				counter++;
+				else
+					{
+					positionNumber = 0;
+					}
+				positionNumber += 4;
 				}
 			System.out.println();
 			}	
