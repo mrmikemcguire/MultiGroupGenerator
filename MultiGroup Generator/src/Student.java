@@ -2,46 +2,53 @@ import java.util.ArrayList;
 
 public class Student
 	{
-	private String name;
-	private int rosterNumber;
-	private ArrayList <Student> teammates;
+	private String firstName;
+	private String lastName;
+	private int prime;
+
 	
-	public Student (String n, int r, ArrayList <Student> t)
+	public Student (String fn, String ln, int p)
 		{
-		name = n;
-		rosterNumber = r;
-		teammates = t;
+		firstName = fn;
+		lastName = ln;
+		prime = p;
 		}
 
-	public String getName()
+
+	public String getFirstName()
 		{
-			return name;
+			return firstName;
 		}
 
-	public void setName(String name)
+
+	public void setFirstName(String firstName)
 		{
-			this.name = name;
+			this.firstName = firstName;
 		}
 
-	public int getRosterNumber()
+
+	public String getLastName()
 		{
-			return rosterNumber;
+			return lastName;
 		}
 
-	public void setRosterNumber(int rosterNumber)
+
+	public void setLastName(String lastName)
 		{
-			this.rosterNumber = rosterNumber;
+			this.lastName = lastName;
 		}
 
-	public ArrayList<Student> getTeammates()
+
+	public int getPrime()
 		{
-			return teammates;
+			return prime;
 		}
 
-	public void setTeammates(ArrayList<Student> teammates)
+
+	public void setPrime(int prime)
 		{
-			this.teammates = teammates;
+			this.prime = prime;
 		}
-	
+
 	}
 
