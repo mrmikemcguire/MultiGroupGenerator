@@ -1,13 +1,16 @@
+import java.util.ArrayList;
 
 public class Student
 	{
 	private String name;
 	private int rosterNumber;
+	private ArrayList <Student> teammates;
 	
-	public Student (String n, int r)
+	public Student (String n, int r, ArrayList <Student> t)
 		{
 		name = n;
 		rosterNumber = r;
+		teammates = t;
 		}
 
 	public String getName()
@@ -29,5 +32,16 @@ public class Student
 		{
 			this.rosterNumber = rosterNumber;
 		}
+
+	public ArrayList<Student> getTeammates()
+		{
+			return teammates;
+		}
+
+	public void setTeammates(ArrayList<Student> teammates)
+		{
+			this.teammates = teammates;
+		}
+	
 	}
 

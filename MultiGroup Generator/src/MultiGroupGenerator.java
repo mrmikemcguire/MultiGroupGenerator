@@ -11,14 +11,16 @@ public class MultiGroupGenerator
 	static int numberOfLargerGroups;
 	static int positionNumber;
 	static ArrayList <Student> roster = new ArrayList <Student>();
+	static ArrayList <Student> teammates = new ArrayList <Student>();
 
 	public static void main(String[] args) throws IOException
 		{
 		fillArrayFromTextFile();
-		//displayStudents();
 		getNumberOfGroups();
+		addTeammates();
+		displayStudents();
 		//printFirstGrouping();
-		printSecondGrouping();
+		//printSecondGrouping();
 		}
 
 	public static void fillArrayFromTextFile() throws FileNotFoundException
@@ -27,7 +29,7 @@ public class MultiGroupGenerator
 		int counter = 1;
 		while (file.hasNext())
 			{
-			roster.add(new Student(file.nextLine(), counter));
+			roster.add(new Student(file.nextLine(), counter, null));
 			counter++;
 			}
 		}
@@ -36,8 +38,9 @@ public class MultiGroupGenerator
 		{
 		for (Student s : roster)
 			{
-			System.out.println(s.getName() + " is #" + s.getRosterNumber());
+			System.out.println(s.getName() + "   " + s.getTeammates());
 			}
+		System.out.println();
 		}
 	
 	public static void getNumberOfGroups()
@@ -52,6 +55,29 @@ public class MultiGroupGenerator
 		System.out.println(numberOfLargerGroups + " groups of " +
 				maxGroupSize + " and " + (numberOfGroups - numberOfLargerGroups) +
 				" groups of " + (maxGroupSize - 1) + ".\n\n");
+		}
+	
+	public static void addTeammates()
+		{
+		int index = 0;
+		for (int i = 0; i < roster.size(); i++)
+			{
+			for (int j = 0; j < numberOfLargerGroups; j++)
+				{
+				for (int k = 0; k < maxGroupSize; k ++)
+					{
+					roster.get(index).setTeammates((roster.get(2)));
+					}
+
+				}
+			for (int l = 0; l < numberOfGroups - numberOfLargerGroups; l++)
+				{
+				for (int k = 0; k < maxGroupSize - 1; k ++)
+					{
+						
+					}
+				}
+			}
 		}
 	
 	public static void printFirstGrouping()
