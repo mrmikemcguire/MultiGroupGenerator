@@ -25,8 +25,100 @@ public class MultiGroupGenerator
 		getNumberOfGroups();
 		//displayStudents();
 		printFirstGrouping();
-		printNextGrouping();
+		//printNextGrouping();
+		findNextGrouping();
 		}
+
+	private static void findNextGrouping() 
+	{
+		boolean fail = true;
+		while(fail)
+		{
+			int counter = 0;
+			boolean con1 = false;
+			for (int i = 1; i <= numberOfLargerGroups; i++)
+				{
+				for(int j = 0; j < maxGroupSize; j++)
+					{
+					
+					for(int m = j + 1; m < maxGroupSize; m++)
+						{
+						if (!products.contains(roster.get(counter).getPrime() * roster.get(m).getPrime()))
+							{
+							tempProducts.add(roster.get(counter).getPrime() * roster.get(m).getPrime());
+							tempRoster.add(roster.get(counter));
+							}
+						else
+							{
+							tempProducts.clear();
+							tempRoster.clear();
+							con1 = true;
+							attemptCounter++;
+							System.out.println("Fail! Attempt # " + attemptCounter);
+							continue;
+							}
+						}
+					if(con1 = true)
+					{
+						continue;
+					}
+					counter++;
+					}
+				if(con1 = true)
+				{
+					continue;
+				}
+				System.out.println();
+				}
+			if(con1 = true)
+			{
+				continue;
+			}
+			for (int i = 0; i < numberOfGroups - numberOfLargerGroups; i++)
+				{
+				for(int j = 0; j < maxGroupSize - 1; j++)
+					{
+					for(int m = j + 1; m < maxGroupSize; m++)
+						{
+						if (!products.contains(roster.get(counter).getPrime() * roster.get(m).getPrime()))
+							{
+							tempProducts.add(roster.get(counter).getPrime() * roster.get(m).getPrime());
+							tempRoster.add(roster.get(counter));
+							}
+						else
+							{
+							tempProducts.clear();
+							tempRoster.clear();
+							con1 = true;
+							attemptCounter++;
+							System.out.println("Fail! Attempt # " + attemptCounter);
+							continue;
+							}
+						}
+					if(con1 = true)
+					{
+						continue;
+					}
+					counter++;
+					}
+				if(con1 = true)
+				{
+					continue;
+				}
+				}	
+			if (tempProducts.size() == products.size())
+				{
+				for (Integer i : tempProducts)
+					{
+						products.add(i);
+					}
+				printNextGrouping();
+				fail = false;
+				}
+			System.out.println("Fail! Attempt # " + attemptCounter);
+		}
+		
+	}
 
 	public static void fillArrayFromTextFile() throws FileNotFoundException
 		{
@@ -102,7 +194,7 @@ public class MultiGroupGenerator
 	public static void printNextGrouping()
 		{
 		int counter = 0;
-		System.out.println("First Project\n");
+		System.out.println("Next Project\n");
 
 		for (int i = 1; i <= numberOfLargerGroups; i++)
 			{
@@ -110,21 +202,10 @@ public class MultiGroupGenerator
 
 			for(int j = 0; j < maxGroupSize; j++)
 				{
-				System.out.println(roster.get(counter).getPrime());	
-
+				System.out.println(tempRoster.get(counter).getLastName());
 				for(int m = j + 1; m < maxGroupSize; m++)
 					{
-					if (!products.contains(roster.get(counter).getPrime() * roster.get(m).getPrime()))
-						{
-						tempProducts.add(roster.get(counter).getPrime() * roster.get(m).getPrime());
-						tempRoster.add(roster.get(counter));
-						}
-					else
-						{
-						tempProducts.clear();
-						tempRoster.clear();
-						reshuffle();
-						}
+					products.add(tempRoster.get(counter).getPrime() * tempRoster.get(m).getPrime());
 					}
 				
 				counter++;
@@ -137,32 +218,15 @@ public class MultiGroupGenerator
 			System.out.println("Group #" + (numberOfLargerGroups + i + 1));
 			for(int j = 0; j < maxGroupSize - 1; j++)
 				{
-				System.out.println(roster.get(counter).getPrime());	
+				System.out.println(tempRoster.get(counter).getLastName());	
 				for(int m = j + 1; m < maxGroupSize; m++)
 					{
-					if (!products.contains(roster.get(counter).getPrime() * roster.get(m).getPrime()))
-						{
-						tempProducts.add(roster.get(counter).getPrime() * roster.get(m).getPrime());
-						tempRoster.add(roster.get(counter));
-						}
-					else
-						{
-						tempProducts.clear();
-						tempRoster.clear();
-						reshuffle();
-						}
+					products.add(tempRoster.get(counter).getPrime() * tempRoster.get(m).getPrime());
 					}
 				counter++;
 				}
 			System.out.println();
 			}	
-		if (tempProducts.size() == products.size())
-			{
-			for (Integer i : tempProducts)
-				{
-					products.add(i);
-				}
-			}
 		System.out.println();
 		}
 	
