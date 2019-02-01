@@ -48,7 +48,6 @@ public class MultiGroupGenerator
 						if (!products.contains(roster.get(counter).getPrime() * roster.get(counter + m).getPrime()))
 							{
 							tempProducts.add(roster.get(counter).getPrime() * roster.get(counter + m).getPrime());
-
 							}
 						else
 							{
@@ -60,11 +59,12 @@ public class MultiGroupGenerator
 							continue;
 							}
 						}
-					tempRoster.add(roster.get(counter));
+					
 					if(pauseRedo = true)
 					{
 						continue;
 					}
+					tempRoster.add(roster.get(counter));
 					counter++;
 					}
 				if(pauseRedo = true)
@@ -72,10 +72,10 @@ public class MultiGroupGenerator
 					continue;
 				}
 				}
-			if(pauseRedo = true)
-			{
-				continue;
-			}
+//			if(pauseRedo = true)
+//			{
+//				continue;
+//			}
 			for (int i = 0; i < numberOfGroups - numberOfLargerGroups; i++)
 				{
 				for(int j = 0; j < maxGroupSize - 1; j++)
@@ -86,7 +86,6 @@ public class MultiGroupGenerator
 						if (!products.contains(roster.get(counter).getPrime() * roster.get(counter + m).getPrime()))
 							{
 							tempProducts.add(roster.get(counter).getPrime() * roster.get(counter + m).getPrime());
-
 							}
 						else
 							{
@@ -98,11 +97,11 @@ public class MultiGroupGenerator
 							continue;
 							}
 						}
-					tempRoster.add(roster.get(counter));
 					if(pauseRedo = true)
 					{
 						continue;
 					}
+					tempRoster.add(roster.get(counter));
 					counter++;
 					}
 				if(pauseRedo = true)
