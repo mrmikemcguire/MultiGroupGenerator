@@ -20,57 +20,59 @@ public class MultiGroupGenerator
 	static int attemptCounter = 1;
 
 	public static void main(String[] args) throws IOException
-		{
+	    {
 		fillArrayFromTextFile();
 		getNumberOfGroups();
-		//displayStudents();
+//		displayStudents();
 		printFirstGrouping();
-		//printNextGrouping();
+//		printNextGrouping();
 		findNextGrouping();
+		System.out.println("end");
 		}
 
 	private static void findNextGrouping() 
 	{
+		Collections.shuffle(roster);
 		boolean fail = true;
 		while(fail)
 		{
 			int counter = 0;
-			boolean con1 = false;
+			boolean pauseRedo = false;
 			for (int i = 1; i <= numberOfLargerGroups; i++)
 				{
 				for(int j = 0; j < maxGroupSize; j++)
 					{
-					
-					for(int m = j + 1; m < maxGroupSize; m++)
+					int tempSizeOfGroup = maxGroupSize - j;
+					for(int m =1; m < tempSizeOfGroup; m++)
 						{
-						if (!products.contains(roster.get(counter).getPrime() * roster.get(m).getPrime()))
+						if (!products.contains(roster.get(counter).getPrime() * roster.get(counter + m).getPrime()))
 							{
-							tempProducts.add(roster.get(counter).getPrime() * roster.get(m).getPrime());
-							tempRoster.add(roster.get(counter));
+							tempProducts.add(roster.get(counter).getPrime() * roster.get(counter + m).getPrime());
+
 							}
 						else
 							{
 							tempProducts.clear();
 							tempRoster.clear();
-							con1 = true;
+							pauseRedo = true;
 							attemptCounter++;
 							System.out.println("Fail! Attempt # " + attemptCounter);
 							continue;
 							}
 						}
-					if(con1 = true)
+					tempRoster.add(roster.get(counter));
+					if(pauseRedo = true)
 					{
 						continue;
 					}
 					counter++;
 					}
-				if(con1 = true)
+				if(pauseRedo = true)
 				{
 					continue;
 				}
-				System.out.println();
 				}
-			if(con1 = true)
+			if(pauseRedo = true)
 			{
 				continue;
 			}
@@ -78,30 +80,32 @@ public class MultiGroupGenerator
 				{
 				for(int j = 0; j < maxGroupSize - 1; j++)
 					{
-					for(int m = j + 1; m < maxGroupSize; m++)
+					int tempSizeOfGroup = maxGroupSize - j;
+					for(int m =1; m < tempSizeOfGroup; m++)
 						{
-						if (!products.contains(roster.get(counter).getPrime() * roster.get(m).getPrime()))
+						if (!products.contains(roster.get(counter).getPrime() * roster.get(counter + m).getPrime()))
 							{
-							tempProducts.add(roster.get(counter).getPrime() * roster.get(m).getPrime());
-							tempRoster.add(roster.get(counter));
+							tempProducts.add(roster.get(counter).getPrime() * roster.get(counter + m).getPrime());
+
 							}
 						else
 							{
 							tempProducts.clear();
 							tempRoster.clear();
-							con1 = true;
+							pauseRedo = true;
 							attemptCounter++;
 							System.out.println("Fail! Attempt # " + attemptCounter);
 							continue;
 							}
 						}
-					if(con1 = true)
+					tempRoster.add(roster.get(counter));
+					if(pauseRedo = true)
 					{
 						continue;
 					}
 					counter++;
 					}
-				if(con1 = true)
+				if(pauseRedo = true)
 				{
 					continue;
 				}
@@ -115,7 +119,6 @@ public class MultiGroupGenerator
 				printNextGrouping();
 				fail = false;
 				}
-			System.out.println("Fail! Attempt # " + attemptCounter);
 		}
 		
 	}
@@ -193,6 +196,7 @@ public class MultiGroupGenerator
 	
 	public static void printNextGrouping()
 		{
+		tempRoster = roster;
 		int counter = 0;
 		System.out.println("Next Project\n");
 
