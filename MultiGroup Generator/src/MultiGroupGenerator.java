@@ -76,7 +76,9 @@ public class MultiGroupGenerator
 //			{
 //				continue;
 //			}
-			for (int i = 0; i < numberOfGroups - numberOfLargerGroups; i++)
+			if(pauseRedo = false)
+			{
+				for (int i = 0; i < numberOfGroups - numberOfLargerGroups; i++)
 				{
 				for(int j = 0; j < maxGroupSize - 1; j++)
 					{
@@ -109,6 +111,8 @@ public class MultiGroupGenerator
 					continue;
 				}
 				}	
+			}
+			
 			if (tempProducts.size() == products.size())
 				{
 				for (Integer i : tempProducts)
